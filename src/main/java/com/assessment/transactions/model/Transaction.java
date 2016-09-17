@@ -31,4 +31,37 @@ public class Transaction {
     public Long getParentId() {
         return parentId;
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", transactionType=" + transactionType +
+                ", amount=" + amount +
+                ", parentId=" + parentId +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Transaction that = (Transaction) o;
+
+        if (!getId().equals(that.getId())) return false;
+        if (getTransactionType() != that.getTransactionType()) return false;
+        if (!getAmount().equals(that.getAmount())) return false;
+        return getParentId().equals(that.getParentId());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId().hashCode();
+        result = 31 * result + getTransactionType().hashCode();
+        result = 31 * result + getAmount().hashCode();
+        result = 31 * result + getParentId().hashCode();
+        return result;
+    }
 }
